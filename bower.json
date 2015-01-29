@@ -1,0 +1,14 @@
+{
+  "name": "webapp",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "modernizr": "~2.8.2",
+    "bowser": "~0.7.1",
+	"greensock": "~1.14.1",
+	"jquery-scrollspy": "*",
+	"videojs": "~4.10.2",
+	"swfobject": "*",
+	"devicejs": "~0.1.16"
+  }
+}

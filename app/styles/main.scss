@@ -1,0 +1,45 @@
+@import "mixins", "fonts";
+
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities";
+
+$experimental-support-for-svg: true;
+
+// vars
+// $imagePath:"../images";
+
+// helpers
+.wrapper{width:998px; margin:0 auto;}
+.clear{clear:both;}
+.clearfix{@include clearfix;}
+.float-left{@include float-left;}
+.float-right{@include float-right;}
+.ir{@include hide-text;}
+.absolute{position:absolute;}
+.relative{position:relative;}
+.a-center{text-align:center;}
+
+// sprite
+$sp-bt-comprar-sprite-dimensions:true;
+@import "../images/sp-bt-comprar/*.png";
+@include all-sp-bt-comprar-sprites; 
+
+
+
+.bt-default{
+    @extend .sp-bt-comprar-bt_comprar;
+    @include box-shadow(0 -10px 30px 0 rgba(23,126,184,.75));
+    @include transition-property(background-position, box-shadow);
+    @include transition-duration(0.2s);
+    @include transition-timing-function(ease-out);
+    display:block; text-indent:-9999px;
+    &:hover{
+        @extend .sp-bt-comprar-bt_comprar_on;
+        @include box-shadow(0 -10px 30px 5px rgba(23,126,184,.75));
+    }
+}
+
+.f-regular{font:16px/130% effraregular, Arial, sans-serif; color:black;}
+.f-light{font:16px/130% effralight, Arial, sans-serif; color:black;}
+.f-bold{font:16px/130% effrabold, Arial, sans-serif; color:black;}

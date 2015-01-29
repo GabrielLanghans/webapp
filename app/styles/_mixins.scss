@@ -1,0 +1,49 @@
+// vars
+$imagePath:"../images"; 
+$highdpi: "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
+
+@mixin ff($name, $fileName:$name, $className:$name, $isWebFont:true) {
+    $fullPath: '#{$fontPath}/#{$fileName}';
+    @if ($isWebFont) {
+        $fullPath: $fullPath + '-webfont';
+    }
+
+    @font-face {
+        font-family: '#{$name}';
+        src: url('#{$fullPath}.eot');
+        src: url('#{$fullPath}.eot?#iefix') format('embedded-opentype'),
+        url('#{$fullPath}.woff') format('woff'),
+        url('#{$fullPath}.ttf') format('truetype'),
+        url('#{$fullPath}.svg#dinproblack') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .#{$className} {
+        font-family: #{$name}, sans-serif;
+    }
+}
+
+@mixin bg($img, $format:png, $repeat:no-repeat, $position:left top, $color:'', $important:'') {
+    background:#{$color} url("#{$imagePath}/#{$img}.#{$format}") $repeat $position #{$important};
+}
+
+@mixin rect($w, $h, $display:block) {
+    width:$w;
+    height:$h;
+    display:$display;
+}
+
+@mixin at2x($img, $format:png, $repeat:no-repeat, $position:left top, $color:'', $w:auto, $h:auto, $display:block) {
+    display:$display;
+    width:$w;
+    height:$h;
+    background: #{$color} url("#{$imagePath}/#{$img}.#{$format}") $repeat $position;
+
+    $at2x_img: "#{$imagePath}/#{$img}" + "@2x" + ".#{$format}";
+
+    @media #{$highdpi} {
+        background: #{$color} url("#{$at2x_img}") $repeat $position;
+        background-size: $w $h;
+    }
+}
